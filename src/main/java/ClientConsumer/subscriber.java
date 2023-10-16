@@ -24,6 +24,7 @@ public class subscriber implements Callable<String> {
     public String call() throws Exception {
         createConnection();
         String channel = "channel1";
+        // this is a blocking call !!!!
         jedis.subscribe(new JedisPubSub() {
             @Override
             public void onMessage(String channel, String message) {

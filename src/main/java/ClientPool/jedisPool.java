@@ -45,6 +45,8 @@ public class jedisPool {
         logger.info("checking for connection from the pool");
         try {
             Jedis jedis = pool.getResource();
+            // enable below command if you have auth setup. ensure proper permissions at redis end
+           // jedis.auth("user2","user2");
             if(jedis!=null)
             {
                 logger.info("obtained connection");

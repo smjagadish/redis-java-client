@@ -29,6 +29,7 @@ public class pipelineProducer implements Callable<String> {
         Pipeline p = jedis.pipelined();
         p.set("java_client_pipeline_string","pipelined string value");
         // this is how you get the value , commenting now as i dont want to consume here
+        // the ret_val is a future and a get on it can be done only after the sync()
         //Response<String> ret_val= p.get("java_client_pipeline_string");
         Map<String,String> hmap = new HashMap<>();
         hmap.put("pkey1","pval1");
