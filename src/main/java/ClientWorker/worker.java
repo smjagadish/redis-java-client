@@ -4,8 +4,7 @@ import ClientConstants.constants;
 import ClientPool.jedisPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPubSub;
+import redis.clients.jedis.*;
 import redis.clients.jedis.params.XAddParams;
 import redis.clients.jedis.params.XReadGroupParams;
 import redis.clients.jedis.params.XReadParams;
@@ -68,7 +67,7 @@ public class worker implements Callable<String> {
                 break;
             case bloomfilter:
                 key = "java_client_bloom";
-                // to do
+                // done in pipelining
                 break;
             case sorted_set:
                 key = "java_client_sortedset";

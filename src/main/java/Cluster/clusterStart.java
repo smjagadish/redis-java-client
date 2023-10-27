@@ -32,7 +32,7 @@ public class clusterStart {
         });
         // the client is smart enough to connect to the correct 'node' which has the key 'hello'
         // my guess is that it uses a connection pool under the hood
+        // each connection pool manages connections automatically
         logger.info(cluster.get("hello"));
-
     }
 }

@@ -36,7 +36,13 @@ public class pipelineProducer implements Callable<String> {
         hmap.put("pkey2","pval2");
         hmap.put("pkey3","pval3");
         p.hset("java_client_pipeline_map",hmap);
+        // using pipelining to add elements to a bloom filter and eventually check for existence
+        p.bfAdd("java_client_bloom","foo");
+        p.bfAdd("java_client_bloom","food");
+        p.bfAdd("java_client_bloom","bar");
+        Response<Boolean> res = p.bfExists("java_client_bloom","food");
         p.sync();
+        logger.info("result of element check in bloom is:"+ res.get());
         return "done";
     }
 }
