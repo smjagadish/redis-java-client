@@ -36,6 +36,8 @@ public class unifiedStart {
                 .addTextField("$.key",1.0).as("key");
         //define index type and doc of interest thru prefix
         IndexDefinition idx = new IndexDefinition(IndexDefinition.Type.JSON).setPrefixes("json_arr");
+        // del the index in case it exists
+        //ujedis.ftDropIndex("java_cli_idx");
         // create the index in redis with the defn and schema
         ujedis.ftCreate("java_cli_idx", IndexOptions.defaultOptions().setDefinition(idx),schema);
         // perform search using index and get the results
